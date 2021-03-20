@@ -4,12 +4,19 @@ import "./CardMovieDetails.scss";
 const shortid = require("shortid");
 
 const CardMovieDetails = ({ movie }) => {
+  const fullUrlImage = `https://image.tmdb.org/t/p/w500`;
   return (
     <>
       <div className="box-movie">
         <img
           className="big-poster"
-          src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+          src={
+            movie.backdrop_path
+              ? `${fullUrlImage}${movie.backdrop_path}`
+              : movie.poster_path
+              ? `${fullUrlImage}${movie.poster_path}`
+              : `https://ik.imagekit.io/s2fpg15d4rx/depositphotos_144011369-stock-photo-popcorn-and-movie-clapper-board_G9Nbh-ef0_9M.jpg`
+          }
           alt={movie.title}
         />
         <div className="about-movie">
