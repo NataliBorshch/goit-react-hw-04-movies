@@ -55,17 +55,7 @@ const CardMovieDetails = ({ movie }) => {
 };
 
 CardMovieDetails.propTypes = {
-  movie: PropTypes.arrayOf(
-    PropTypes.shape({
-      backdrop_path: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      production_countries: PropTypes.arrayOf.isRequired,
-      genres: PropTypes.arrayOf.isRequired,
-      production_companie: PropTypes.arrayOf.isRequired,
-      overview: PropTypes.string.isRequired,
-      budget: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  movie: PropTypes.object.isRequired,
 };
 
 export default CardMovieDetails;

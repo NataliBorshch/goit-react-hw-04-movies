@@ -21,6 +21,7 @@ class MovieDetails extends Component {
 
   handleBack = () => {
     const { location, history } = this.props;
+    console.log(location);
     history.push(location?.state?.from || routes.home);
   };
   render() {
@@ -39,7 +40,13 @@ class MovieDetails extends Component {
           <ul>
             <li>
               <NavLink
-                to={`${match.url}/cast`}
+                exact
+                to={{
+                  pathname: `${match.url}/cast`,
+                  state: {
+                    from: "/movies",
+                  },
+                }}
                 className="info-link"
                 activeClassName="info-link-activ"
               >
@@ -48,7 +55,13 @@ class MovieDetails extends Component {
             </li>
             <li>
               <NavLink
-                to={`${match.url}/reviews`}
+                exact
+                to={{
+                  pathname: `${match.url}/reviews`,
+                  state: {
+                    from: "/movies",
+                  },
+                }}
                 className="info-link"
                 activeClassName="info-link-activ"
               >

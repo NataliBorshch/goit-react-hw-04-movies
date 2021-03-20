@@ -20,8 +20,8 @@ class Cast extends Component {
           {this.state.cast.map((elem) => {
             return (
               <Actor
-                key={elem.key}
                 id={elem.id}
+                key={elem.id}
                 name={elem.name}
                 character={elem.character}
                 profile={

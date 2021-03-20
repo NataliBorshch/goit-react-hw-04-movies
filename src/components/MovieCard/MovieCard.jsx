@@ -24,13 +24,7 @@ const MovieCard = ({ item }) => {
 };
 
 MovieCard.propTypes = {
-  item: PropTypes.arrayOf(
-    PropTypes.shape({
-      poster_path: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      release_date: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  item: PropTypes.object.isRequired,
 };
 
 export default MovieCard;

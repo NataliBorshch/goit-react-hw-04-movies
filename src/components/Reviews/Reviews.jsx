@@ -8,9 +8,7 @@ class Reviews extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.id);
     Servise.getReviewMovies(this.props.id).then((data) => {
-      console.log(data);
       this.setState({ reviews: [...data.results] });
     });
   }
