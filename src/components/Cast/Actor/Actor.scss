@@ -1,0 +1,20 @@
+img {
+  width: 100%;
+  height: auto;
+}
+
+.character {
+  font-size: 10px;
+}
+
+.name-actor {
+  font-size: 12px;
+  color: rgb(49, 149, 207);
+}
+
+.actor-card {
+  margin: 5px;
+  width: calc((100% - (18px * 5)) / 18);
+  box-shadow: 0 0 5px #257fda;
+  border-radius: 5px;
+}

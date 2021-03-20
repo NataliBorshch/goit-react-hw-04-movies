@@ -1,0 +1,10 @@
+@import "../../styles/colors";
+
+.nav-link {
+  color: $base-color;
+  margin-left: 15px;
+}
+
+.active {
+  color: $accent-color;
+}
