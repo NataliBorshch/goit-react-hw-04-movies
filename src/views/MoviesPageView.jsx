@@ -6,13 +6,18 @@ import Servise from "../servise/serviseMovies";
 
 class MoviesPage extends Component {
   state = {
-    query: "",
-    movies: null,
+    movies: [],
+    searchMovie: null,
   };
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.query !== prevState.query) {
-      this.getCollectionMovies(this.state.query);
+    const { searchMovie } = this.state;
+    if (searchMovie !== prevState.searchMovie) {
+      this.getCollectionMovies(searchMovie);
     }
+  }
+  componentDidMount() {
+    const value = this.props.location.search.slice(7);
+    value && this.getCollectionMovies(value);
   }
 
   getCollectionMovies = (value) => {
@@ -20,29 +25,25 @@ class MoviesPage extends Component {
       this.setState({ movies: [...data.results] });
     });
   };
-  componentDidMount() {
-    const query = localStorage.getItem("query");
-    query && this.getCollectionMovies(query);
-  }
 
   onSubmit = (query) => {
     const { history, location } = this.props;
-    localStorage.setItem("query", `${query}`);
     history.push({
       ...location,
-      search: `query=${query.trim()}`,
+      search: `?query=${query.trim()}`,
     });
-    this.setState({ query });
+    this.setState({ searchMovie: query });
   };
 
   render() {
-    const { movies, query } = this.state;
+    const { movies } = this.state;
+    const { search } = this.props.history.location;
     return (
       <>
         <Form onSubmit={this.onSubmit} />
         {movies && (
           <Route
-            to={`/movies?query=${query}`}
+            to={`/movies?${search}`}
             render={(props) => {
               return <MoviesList {...props} movies={movies} />;
             }}

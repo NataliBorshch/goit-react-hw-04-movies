@@ -27,8 +27,8 @@ class MovieDetails extends Component {
   render() {
     const key = Object.keys(this.state.movie).length;
     const { movie } = this.state;
-    const { match } = this.props;
-    const { from } = this.props.location.state;
+    const { match, location } = this.props;
+    // const { from } = this.props.location.state;
     return (
       <>
         <button className="btn-back" onClick={this.handleBack}>
@@ -44,7 +44,7 @@ class MovieDetails extends Component {
                 to={{
                   pathname: `${match.url}/cast`,
                   state: {
-                    from: from,
+                    from: location?.state?.from || "/",
                   },
                 }}
                 className="info-link"
@@ -59,7 +59,7 @@ class MovieDetails extends Component {
                 to={{
                   pathname: `${match.url}/reviews`,
                   state: {
-                    from: from,
+                    from: location?.state?.from || "/",
                   },
                 }}
                 className="info-link"
