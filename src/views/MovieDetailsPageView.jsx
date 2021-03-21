@@ -13,22 +13,22 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     const id = Number(this.props.match.params.movieId);
-
     Servise.detailMovies(id).then((data) => {
-      this.setState({ movie: { ...data } });
+      this.setState({
+        movie: { ...data },
+      });
     });
   }
 
   handleBack = () => {
     const { location, history } = this.props;
-    console.log(location);
     history.push(location?.state?.from || routes.home);
   };
   render() {
     const key = Object.keys(this.state.movie).length;
     const { movie } = this.state;
     const { match } = this.props;
-
+    const { from } = this.props.location.state;
     return (
       <>
         <button className="btn-back" onClick={this.handleBack}>
@@ -44,7 +44,7 @@ class MovieDetails extends Component {
                 to={{
                   pathname: `${match.url}/cast`,
                   state: {
-                    from: "/movies",
+                    from: from,
                   },
                 }}
                 className="info-link"
@@ -59,7 +59,7 @@ class MovieDetails extends Component {
                 to={{
                   pathname: `${match.url}/reviews`,
                   state: {
-                    from: "/movies",
+                    from: from,
                   },
                 }}
                 className="info-link"
